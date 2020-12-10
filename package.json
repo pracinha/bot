@@ -1,0 +1,56 @@
+{
+	"name": "@pracinha/discord-bot",
+	"version": "0.0.0",
+	"description": "Our bot that runs on discord",
+	"main": "dist/bot/index.js",
+	"author": "Filipe Kiss <hello@filipekiss.com.br>",
+	"license": "MIT",
+	"scripts": {
+		"compile": "tsc",
+		"start": "node ./dist/bot/index.js",
+		"start:dev": "ts-node -r tsconfig-paths/register ./src/bot/index.ts",
+		"start:watch": "nodemon",
+		"test": "jest"
+	},
+	"private": false,
+	"dependencies": {
+		"cabin": "^9.0.2",
+		"discord.js": "^12.4.1",
+		"dotenv": "^8.2.0",
+		"globby": "^11.0.1",
+		"got": "^11.8.1",
+		"rxjs": "^6.6.3",
+		"signale": "^1.4.0"
+	},
+	"devDependencies": {
+		"@types/node": "^14.14.6",
+		"@types/signale": "^1.4.1",
+		"@types/ws": "^7.4.0",
+		"fantasy-land": "^4.1.0",
+		"fp-ts": "^2.9.1",
+		"fp-ts-std": "^0.7.0",
+		"jest": "^26.6.1",
+		"nodemon": "^2.0.6",
+		"prettier": "^2.1.2",
+		"ts-node": "^9.0.0",
+		"ts-toolbelt": "^8.0.7",
+		"tsconfig-paths": "^3.9.0",
+		"typescript": "^4.0.3"
+	},
+	"nodemonConfig": {
+		"ignore": [
+			"**/*.test.ts",
+			"**/*.spec.ts",
+			".git",
+			"node_modules"
+		],
+		"watch": [
+			"src"
+		],
+		"exec": "yarn start:dev",
+		"ext": "ts",
+		"events": {
+			"start": "clear"
+		}
+	}
+}

@@ -1,0 +1,27 @@
+{
+	"compilerOptions": {
+		"downlevelIteration": true,
+		"pretty": true,
+		"declaration": true,
+		"noEmitOnError": true,
+		"preserveConstEnums": true,
+		"listEmittedFiles": true,
+		"esModuleInterop": true,
+		"sourceMap": false,
+		"stripInternal": true,
+		"target": "ES5",
+		"lib": ["esnext"],
+		"removeComments": true,
+		"noImplicitAny": true,
+		"strict": true,
+		"allowJs": false,
+		"outDir": "./dist",
+		"rootDir": "./src",
+		"baseUrl": "./src",
+		"paths": {
+			"adq8/*": ["./adq8/*"],
+			"@bot/*": ["./bot/*"]
+		}
+	},
+	"exclude": ["jest.config.ts", "dist", "node_modules"]
+}
