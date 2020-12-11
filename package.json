@@ -19,10 +19,12 @@
 		"dotenv": "^8.2.0",
 		"globby": "^11.0.1",
 		"got": "^11.8.1",
+		"lowdb": "^1.0.0",
 		"rxjs": "^6.6.3",
 		"signale": "^1.4.0"
 	},
 	"devDependencies": {
+		"@types/lowdb": "^1.0.9",
 		"@types/node": "^14.14.6",
 		"@types/signale": "^1.4.1",
 		"@types/ws": "^7.4.0",

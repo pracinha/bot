@@ -1,4 +1,4 @@
-import {Signale} from 'signale';
+import signale, {Signale} from 'signale';
 
 export const logger = new Signale({
 	scope: 'bot',
@@ -8,9 +8,14 @@ export const logger = new Signale({
 	},
 });
 
-export const formatWarn = (format: string) => (...values: string[]) =>
-	logger.warn.apply(null, [format, ...values]);
+const makeSignaleFormatter = (formatter: signale.LoggerFunc) => {
+	return (format: string) => (...values: string[]) =>
+		formatter.apply(null, [format, ...values]);
+};
+
+export const formatWarn = makeSignaleFormatter(logger.warn);
 export const printWarn = formatWarn('%s');
-export const formatInfo = (format: string) => (...values: string[]) =>
-	logger.info.apply(null, [format, ...values]);
+export const formatDebug = makeSignaleFormatter(logger.debug);
+export const printDebug = formatDebug('%s');
+export const formatInfo = makeSignaleFormatter(logger.info);
 export const printInfo = formatInfo('%s');

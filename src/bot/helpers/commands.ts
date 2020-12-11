@@ -9,14 +9,16 @@ import {hasProp} from 'adq8/core/object/has-prop';
 import {isObject} from 'adq8/core/object/is-object';
 import endsWith from 'adq8/core/string/ends-with';
 import startsWith from 'adq8/core/string/starts-with';
-import {traceWith} from 'adq8/_helpers/trace';
+import {map} from 'adq8/map';
+import {not} from 'adq8/not';
+import {trace, traceWith} from 'adq8/_helpers/trace';
 import {Message} from 'discord.js';
 import {sync as globby} from 'globby';
 import {basename} from 'path';
 import {F} from 'ts-toolbelt';
 import {DISABLED_COMMAND_PREFIX, DTS_EXTENSION} from '../constants';
-import {BOT_PREFIX} from '../env';
-import {formatInfo} from './logger';
+import {BOT_PREFIX} from './env';
+import {formatDebug} from './logger';
 
 const readFolder = () =>
 	function readFolder(path: string) {
@@ -54,12 +56,14 @@ export type CommandDefinition = {
 export const loadFromDisk = compose(
 	traceWith(
 		compose(
-			formatInfo('Loaded Command: %s'),
+			formatDebug('Loaded Command: %s'),
 			join(', '),
 			mapArray<Command, string>(getProp('name'))
 		)
 	),
-	mapArray(compose(getProp<Command>('command'), require)),
+	mapArray(getProp('command')),
+	reject(not(hasProp('command'))),
+	mapArray(require),
 	reject(isFileDisabled(DISABLED_COMMAND_PREFIX)),
 	reject(endsWith(DTS_EXTENSION)),
 	readFolder()

@@ -4,7 +4,7 @@ import {reduce} from 'adq8/core/array/reduce';
 import drop from 'adq8/core/string/drop';
 import {guard} from 'adq8/guard';
 import Discord from 'discord.js';
-import {BOT_TOKEN} from './env';
+import {BOT_TOKEN} from './helpers/env';
 import {Command, loadFromDisk} from './helpers/commands';
 import {DEFAULT_COMMANDS_FOLDER} from './helpers/env';
 import {getEventListeners} from './helpers/events';

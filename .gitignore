@@ -1,3 +1,5 @@
 dist
-src/.env
-src/.env.production
+.env
+.env.production
+src/bot/data/cache/*
+!src/bot/data/cache/.gitkeep
