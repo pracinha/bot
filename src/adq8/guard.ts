@@ -29,14 +29,21 @@ export function guard<A, B>(branches: Array<[Predicate<A>, (x: A) => B]>) {
 		return (input: A): B => {
 			const [, expr] = [...branches, [always(true), fallback]].find(
 				([cond]) => {
-					console.log({cond, res: cond(input)});
 					return cond(input);
 				}
 			);
-			console.log({expr, input});
 			return expr(input) as B;
 		};
 	};
 }
 
 export default guard;
+
+export function branches<A, B>(branches: Array<[Predicate<A>, (x: A) => B]>) {
+	return (input: A): B => {
+		const [, expr] = [...branches].find(([cond]) => {
+			return cond(input);
+		});
+		return expr(input) as B;
+	};
+}

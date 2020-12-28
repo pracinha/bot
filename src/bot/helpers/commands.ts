@@ -37,6 +37,7 @@ export type Command = {
 	description: string;
 	aliases: string[];
 	handler: F.Function<[Message, string, string[]], unknown>;
+	namespace?: string;
 };
 
 export const noop = (_: Message) => {};

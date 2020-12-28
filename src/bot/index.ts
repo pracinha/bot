@@ -18,6 +18,9 @@ const addCommandToMap = (
 	currentMap: Map<string, Command>,
 	currentCommand: Command
 ) => {
+	currentCommand.aliases.forEach(alias =>
+		currentMap.set(alias, currentCommand)
+	);
 	return currentMap.set(currentCommand.name, currentCommand);
 };
 
